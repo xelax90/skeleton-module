@@ -1,0 +1,70 @@
+{
+    "name":         "xelax90/skeleton-module",
+	"version":      "dev-master",
+	"description":  "A module taken out from xelax90/skelleton to allow composer usage",
+    "description":  "Small extension to xelax-admin to allow tree editing and viewing",
+    "type":         "module",
+	"license":      "GPL-2.0",
+    "homepage":     "https://github.com/xelax90/xelax-tree-editor",
+	"keywords": [
+		"Skelleton",
+		"Zend",
+		"Doctrine",
+		"ZfcUser",
+		"BjyAuthorize",
+		"Bower"
+	],
+    "authors": [
+        {
+            "name": "xelax",
+            "email": "schurix@gmx.de",
+			"homepage" : "https://github.com/xelax90"
+        }
+    ],
+    "require": {
+		"php": ">=5.5",
+		"zendframework/zendframework": "~2.5",
+		
+		"articus/zf2-bower-module": "*",
+		
+		"doctrine/doctrine-module": "*",
+		"doctrine/doctrine-orm-module": "*",
+		
+		"zf-commons/zfc-user": "*",
+		"zf-commons/zfc-user-doctrine-orm": "*",
+		
+		"bjyoungblood/bjy-authorize": "*",
+		
+		"goalio/goalio-forgotpassword": "*",
+		"goalio/goalio-forgotpassword-doctrine-orm": "*",
+		
+		"eye4web/zf2-site-config": "*",
+		"zf-commons/zfc-admin": "*",
+		"zf-commons/zfc-twig": "~1.2",
+		
+		"azatoth/php-pgettext": "*"
+		"xelax90/zf2-filter-htmlpurifier": "*",
+		"xelax90/password-generator-module": "*",
+		
+		"doctrine/data-fixtures": "dev-master",
+		"hounddog/doctrine-data-fixture-module": "dev-master",
+		"danielss89/zfc-user-admin": "dev-master",
+		"eye4web/zf2-site-config": "dev-master",
+		
+		"xelax90/xelax-admin": "dev-master",
+		"neilime/zf2-twb-bundle": "dev-master",
+		"xelax90/xelax-twb-unmask": "dev-master",
+		"xelax90/xelax-formgen": "dev-master",
+		"xelax90/xelax-site-config": "dev-master",
+		"xelax90/xelax-tree-editor": "dev-master",
+    },
+    "require-dev": {
+    },
+    "suggests": {
+	},
+    "autoload": {
+        "psr-0": {
+            "XelaxTreeEditor\\": "src/"
+        }
+    }
+}
