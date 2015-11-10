@@ -42,7 +42,7 @@
 		"zf-commons/zfc-admin": "*",
 		"zf-commons/zfc-twig": "~1.2",
 		
-		"azatoth/php-pgettext": "*"
+		"azatoth/php-pgettext": "*",
 		"xelax90/zf2-filter-htmlpurifier": "*",
 		"xelax90/password-generator-module": "*",
 		
