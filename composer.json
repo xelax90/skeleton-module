@@ -56,7 +56,7 @@
 		"xelax90/xelax-twb-unmask": "dev-master",
 		"xelax90/xelax-formgen": "dev-master",
 		"xelax90/xelax-site-config": "dev-master",
-		"xelax90/xelax-tree-editor": "dev-master",
+		"xelax90/xelax-tree-editor": "dev-master"
     },
     "require-dev": {
     },
