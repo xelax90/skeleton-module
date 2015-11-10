@@ -1,1 +1,1 @@
-<?php include '../../Module.php' 
+<?php include __DIR__.'/../../Module.php' 

@@ -63,7 +63,7 @@
 	},
     "autoload": {
         "psr-0": {
-            "XelaxTreeEditor\\": "src/"
+            "SkelletonApplication\\": "src/"
         }
     }
 }
