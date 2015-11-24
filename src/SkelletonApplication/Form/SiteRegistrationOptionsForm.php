@@ -19,10 +19,8 @@
 
 namespace SkelletonApplication\Form;
 
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Zend\Form\Element\Csrf;
 use Zend\InputFilter\InputFilter;
-use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use DoctrineModule\Persistence\ProvidesObjectManager;
 use XelaxSiteConfig\Form\AbstractSiteConfigForm;
 
 /**
@@ -47,6 +45,11 @@ class SiteRegistrationOptionsForm extends AbstractSiteConfigForm{
                 'use_as_base_fieldset' => true,
             ),
         ));
+		
+		$this->add(array(
+			'name' => 'config_csrf',
+			'type' => Csrf::class,
+		));
 		
 		$this->add(array(
 			'name' => 'submit',

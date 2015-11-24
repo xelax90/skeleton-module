@@ -20,6 +20,7 @@
 namespace SkelletonApplication\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element\Csrf;
 use Zend\InputFilter\InputFilter;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use DoctrineModule\Persistence\ProvidesObjectManager;
@@ -48,6 +49,11 @@ class SiteEmailTemplateForm extends Form implements ObjectManagerAwareInterface{
                 'use_as_base_fieldset' => true,
             ),
         ));
+		
+		$this->add(array(
+			'name' => 'templates_csrf',
+			'type' => Csrf::class,
+		));
 		
 		$this->add(array(
 			'name' => 'submit',

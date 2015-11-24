@@ -20,6 +20,7 @@
 namespace SkelletonApplication\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element\Csrf;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Zend\InputFilter\InputFilter;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
@@ -50,6 +51,11 @@ class RoleForm extends Form implements ObjectManagerAwareInterface{
                 'use_as_base_fieldset' => true,
             ),
         ));
+		
+		$this->add(array(
+			'name' => 'role_csrf',
+			'type' => Csrf::class,
+		));
 		
 		$this->add(array(
 			'name' => 'submit',
