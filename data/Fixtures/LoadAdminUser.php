@@ -69,17 +69,30 @@ class LoadAdminUser extends AbstractFixture implements FixtureInterface, Service
 			return;
 		}
 
+		/* @var $options \SkelletonApplication\Options\SiteRegistrationOptions */
+		$options = $this->getServiceLocator()->get(\SkelletonApplication\Options\SiteRegistrationOptions::class);
+
+		// save current registration E-Mail flag
+		$emailFlag = $options->getRegistrationEmailFlag();
+		// disable all regsitration E-Mails
+		$options->setRegistrationEmailFlag(0);
+
+		// register user
 		/* @var $userObject User */
 		$userObject = $userService->register($data);
 		if(!$userObject){
 			throw new \Exception(sprintf('Registration of user %s failed', $item->name));
 		}
+		// activate, set data, ...
 		$userObject->setUsername($data['username']);
 		$userObject->setEmail($data['email']);
 		$userObject->setState(1);
 		$userObject->addRoles(array($this->getReference('admin-role')));
 		$manager->flush();
-
+		
+		// restore registration E-Mail flag
+		$options->setRegistrationEmailFlag($emailFlag);
+		
 		$this->addReference('admin-user', $userObject);
 	}
 

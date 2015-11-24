@@ -145,69 +145,6 @@ class SiteRegistrationOptionsFieldset extends Fieldset implements InputFilterPro
 				'id' => "",
 			)
 		));
-		
-		$this->add(array(
-			'name' => 'registration_moderator_email',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Moderator notification'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
-		
-		$this->add(array(
-			'name' => 'registration_user_email_welcome_confirm_mail',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Welcome confirm'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
-		
-		$this->add(array(
-			'name' => 'registration_user_email_double_confirm',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Double confirm'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
-		
-		$this->add(array(
-			'name' => 'registration_user_email_confirm_mail',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Self confirm'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
-		
-		$this->add(array(
-			'name' => 'registration_user_email_confirm_moderator',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Moderator confirm'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
-		
-		$this->add(array(
-			'name' => 'registration_user_email_activated',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Activated'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
-		
-		$this->add(array(
-			'name' => 'registration_user_email_disabled',
-            'type' => SiteEmailOptionsFieldset::class,
-            'options' => array(
-				'label' => gettext_noop('E-Mail Disabled'),
-                'use_as_base_fieldset' => false,
-            ),
-        ));
 	}
 	
 	public function getInputFilterSpecification() {
