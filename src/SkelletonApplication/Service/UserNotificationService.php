@@ -153,7 +153,7 @@ class UserNotificationService implements ServiceLocatorAwareInterface{
 	}
 	
 	public function getMessage($flag, $user, $parameters = null){
-		if(!$this->getRegistrationOptions()->getRegistrationEmailFlag() & $flag){
+		if(!($this->getRegistrationOptions()->getRegistrationEmailFlag() & $flag)){
 			return null;
 		}
 		if($parameters === null){
