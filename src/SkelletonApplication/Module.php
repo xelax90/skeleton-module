@@ -6,6 +6,7 @@ use Zend\Mvc\MvcEvent;
 use SkelletonApplication\Listener\UserListener;
 use Zend\View\Helper\Navigation;
 use BjyAuthorize\Service\Authorize;
+use Zend\Session\SessionManager;
 
 class Module
 {
@@ -13,7 +14,10 @@ class Module
 		$app = $e->getApplication();
 		$eventManager = $app->getEventManager();
 		$sm = $app->getServiceManager();
-
+		
+		// initialize SessionManager
+		$this->bootstrapSession($e);
+		
 		// Attach UserListener for role and UserProfile handling
 		$listener = $sm->get(UserListener::class);
 		$eventManager->attach($listener);
@@ -80,6 +84,12 @@ class Module
 			}
 		}
 	}
+	
+	public function bootstrapSession(MvcEvent $e){
+		$session = $e->getApplication()
+					 ->getServiceManager()
+					 ->get(SessionManager::class);
+	}	
 	
 	public function getConfig(){
 		return include __DIR__ . '/../../config/module.config.php';

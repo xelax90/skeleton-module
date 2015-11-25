@@ -24,7 +24,7 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use SkelletonApplication\Options\SiteRegistrationOptions;
 use SkelletonApplication\Entity\User;
-use SkelletonApplication\Options\ZfcUserModuleOptions as ModuleOptions;
+use ZfcUserDoctrineORM\Options\ModuleOptions;
 use Exception;
 
 /**

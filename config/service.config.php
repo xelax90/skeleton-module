@@ -6,6 +6,10 @@ use Zend\Log\LoggerAbstractServiceFactory;
 use ZfcUser\Authentication\Storage\Db as ZfcDbStorage;
 use Zend\Navigation\Service\DefaultNavigationFactory;
 use Zend\ServiceManager\ServiceManager;
+use Zend\Session\SessionManager;
+use Zend\Session\Service\SessionManagerFactory;
+use Zend\Session\Config\ConfigInterface;
+use Zend\Session\Service\SessionConfigFactory;
 
 return array(
 	'abstract_factories' => array(
@@ -27,6 +31,8 @@ return array(
 		'zfcuser_module_options' => Options\Service\ZfcUserOptionsFactory::class,
 		Options\SiteRegistrationOptions::class => Options\Service\SiteRegistrationOptionsFactory::class,
 		Twig\DbLoader::class => Twig\DbLoaderFactory::class,
+		SessionManager::class => SessionManagerFactory::class,
+		ConfigInterface::class => SessionConfigFactory::class,
 	),
 	'aliases' => array(
 		'SkelletonApplication\Options\Application' => Options\SkelletonOptions::class,

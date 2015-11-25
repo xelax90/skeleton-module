@@ -42,19 +42,4 @@ class Db extends ZfcDb{
 		}
 		return $identity;
 	}
-	
-	public function getStorage() {
-        if (null === $this->storage) {
-			/* @var $config \SkelletonApplication\Options\ZfcUserModuleOptions */
-			$config = $this->getServiceManager()->get('zfcuser_module_options');
-			// use sessionNamespace parameter if present
-			$namespace = null;
-			if(is_callable(array($config, 'getSessionNamespace'))){
-				$namespace = $config->getSessionNamespace();
-			}
-            $this->setStorage(new Storage\Session($namespace));
-        }
-        return $this->storage;
-	}
-	
 }
