@@ -226,9 +226,15 @@ class LanguageSwitch extends AbstractTranslatorHelper implements ServiceLocatorA
 				$optClass .= ' '.$optionActiveClass;
 			}
 			$optClass .= ' '.$optionLanguageClassPrefix.$locale;
-			$parameters = $this->getRouteMatch()->getParams();
+			$parameters = array();
+			$route = 'home';
+			if($this->getRouteMatch()){
+				$parameters = $this->getRouteMatch()->getParams();
+				$route = null;
+			}
 			$parameters['locale'] = $locale;
-			$url = $urlPlugin(null, $parameters);
+			
+			$url = $urlPlugin($route, $parameters);
 			$link = sprintf(static::$navbarOptionLinkFormat, $url, $optionLinkClass, $localeKey);
 			$options .= sprintf(static::$navbarOptionFormat, $optClass, $link);
 		}
