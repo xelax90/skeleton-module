@@ -173,14 +173,39 @@ class UserNotificationService implements ServiceLocatorAwareInterface{
 		}
 		
 		$options = $this->getRegistrationOptions();
+		$emailFrom = $options->getRegistrationNotificationFrom();
+		$fromName = '';
+		$fromMail = '';
+		if(strpos($emailFrom, '<') !== false){
+			$pos1 = strpos($emailFrom, '<');
+			$pos2 = strpos($emailFrom, '>');
+			$fromName = trim(substr($emailFrom, 0, $pos1));
+			$fromMail = trim(substr($emailFrom, $pos1 + 1, $pos2 - $pos1 - 1));
+		} else {
+			$fromMail = $emailFrom;
+			$fromName = ucwords(trim(substr($emailFrom, 0, strpos($emailFrom, '@'))));
+		}
+		
 		$transport = $this->getTransport();
 		$message = $transport->createHtmlMessage(
-				$options->getRegistrationNotificationFrom(), 
+				array('name' => $fromName, 'email' => $fromMail),
 				$user->getEmail(), 
 				$translator->translate(SiteRegistrationOptions::getSubjectTemplateKey($flag)),
 				SiteRegistrationOptions::getEmailTemplateKey($flag),
 				$parameters
 		);
+		$message->getHeaders()->get('content-type')->setType('multipart/alternative');
+		
+		$messageParts = $message->getBody()->getParts();
+		$messageParts[0]->setCharset('utf-8');
+		$messageParts[1]->setCharset('utf-8');
+		
+		$textPart = $messageParts[0];
+		$htmlContent = $messageParts[1]->getContent();
+		$textContent = str_replace(array("\r\n", "\r", "\n"), "", $htmlContent);
+		$textContent = str_replace(array("<br>", "<br />"), PHP_EOL, $htmlContent);
+		$textContent = strip_tags($textContent);
+		$textPart->setContent($textContent);
 		
 		// restore locale
 		$translator->setLocale($translatorLocale);
