@@ -26,6 +26,7 @@ use Doctrine\ORM\EntityManager;
 use GoalioMailService\Mail\Service\Message as GoalioMessage;
 use SkelletonApplication\Options\SiteRegistrationOptions;
 use Zend\Mail\Message;
+use SkelletonApplication\Entity\User;
 
 /**
  * Service that handles user notifications
@@ -128,7 +129,9 @@ class UserNotificationService implements ServiceLocatorAwareInterface{
 		}
 
 		$users = $this->getEntityManager()->getRepository(get_class($user))->createQueryBuilder('u')
-				->leftJoin('u.roles', 'r');
+				->leftJoin('u.roles', 'r')
+				->andWhere('u.state & :userState > 0')
+				->setParameter('userState', (1 << User::STATE_ACTIVE_BIT));
 		if($roleString){
 			$users->andWhere('r.roleId IN (:roleIds)');
 		} else {
