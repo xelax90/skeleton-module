@@ -130,7 +130,7 @@ class UserNotificationService implements ServiceLocatorAwareInterface{
 
 		$users = $this->getEntityManager()->getRepository(get_class($user))->createQueryBuilder('u')
 				->leftJoin('u.roles', 'r')
-				->andWhere('u.state & :userState > 0')
+				->andWhere('BIT_AND(u.state, :userState) > 0')
 				->setParameter('userState', (1 << User::STATE_ACTIVE_BIT));
 		if($roleString){
 			$users->andWhere('r.roleId IN (:roleIds)');

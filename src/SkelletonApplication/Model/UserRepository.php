@@ -36,6 +36,7 @@ class UserRepository extends EntityRepository{
 				->andWhere('u.tokenCreatedAt <= :date')
 				->andWhere('BIT_AND(u.state, 1) = 0')
 				->andWhere('BIT_AND(u.state, 2) = 0')
+				->andWhere('u.updatedAt = u.createdAt')
 				->setParameter('date', $now)
 				->getQuery()
 				->execute();
