@@ -20,9 +20,9 @@ return array(
 		Listener\UserListener::class => Listener\UserListener::class,
 		Service\UserService::class => Service\UserService::class,
 		Service\UserNotificationService::class => Service\UserNotificationService::class,
-		ZfcDbStorage::class => Authentication\Storage\Db::class,
 	),
 	'factories' => array(
+		ZfcDbStorage::class => Factory\Authentication\Storage\Db::class,
 		'Navigation' => DefaultNavigationFactory::class,
 		Options\SkelletonOptions::class => function (ServiceManager $sm) {
 			$config = $sm->get('Config');
