@@ -27,7 +27,6 @@
 		
 		"articus/zf2-bower-module": "*",
 		
-		"doctrine/doctrine-module": "*",
 		"doctrine/doctrine-orm-module": "*",
 		
 		"zf-commons/zfc-user": "*",
@@ -46,7 +45,7 @@
 		"xelax90/zf2-filter-htmlpurifier": "*",
 		"xelax90/password-generator-module": "*",
 		
-		"doctrine/data-fixtures": "dev-master",
+		"doctrine/data-fixtures": "*",
 		"hounddog/doctrine-data-fixture-module": "dev-master",
 		"danielss89/zfc-user-admin": "dev-master",
 		
